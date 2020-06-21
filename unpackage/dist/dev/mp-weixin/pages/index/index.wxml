@@ -1,1 +1,0 @@
-<view class="container"><view class="flex solid-4" style="height:100rpx;width:400rpx;"><text class="bg-cyan width-max text-cut-2">leftleftleftleftleftleftleftleftleftleftleftleftleftleftleftleftleftleftleftleftleftleftleftleftleftleft</text></view><button type="default" data-event-opts="{{[['tap',[['tesat',['$event']]]]]}}" bindtap="__e">测试跳转</button></view>
