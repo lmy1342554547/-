@@ -5,7 +5,7 @@ const install = (Vue, vm) => {
     // 开发环境和生产环境判断
     if (process.env.NODE_ENV === 'development') {
         // 这里配置开发环境基础请求地址
-        baseUrl = 'http://47.113.121.251/fqhw-server';
+        baseUrl = 'http://127.0.0.1:3000';
     } else {
         // 这里配置生产环境基础请求地址
         baseUrl = 'http://47.113.121.251/fqhw-server';

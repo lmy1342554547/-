@@ -5,7 +5,7 @@
             <text class="title text-center text-green">基础框架更新于{{ 1591174302 | timeFrom() }}</text>
             <text class="title text-center text-green">js相关代码请查看utils/index.js</text>
         </view>
-        <button class="cu-btn test-button bg-theme text-white" :disabled="false" type="" @tap="tesat">测试</button>
+        <button class="cu-btn test-button bg-theme text-white" :disabled="false" type="" @tap="test">测试</button>
     </view>
 </template>
 
@@ -36,9 +36,12 @@ export default {
         change(index) {
             this.current = index;
         },
-        async tesat() {
-            let value = await this.$http.post('/auth/inspectorsLogin', {});
-            console.log(value);
+        test() {
+             this.$http.get('/api/login', {
+                 aaa:[11,222]
+             }).then(res => {
+                 console.log(res);
+             });
         }
     },
     onPullDownRefresh() {}
