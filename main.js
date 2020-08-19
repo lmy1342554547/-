@@ -6,9 +6,9 @@ import cuCustom from './components/cu-custom/cu-custom.vue'
 Vue.component('cu-custom', cuCustom)
 
 // 引入全局mixin
-import mixin from './mixins/mixin.js'
 import utils from './utils';
 import filters from './filters';
+import mixin from './mixins/mixin.js'
 
 Vue.config.productionTip = false
 App.mpType = 'app'
