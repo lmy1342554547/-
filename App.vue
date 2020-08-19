@@ -56,6 +56,6 @@ export default {
 <style lang="scss">
 /*每个页面公共css */
 @import './styles/main.scss';
-@import './styles/icon.css';
-@import './styles/animation.css';
+@import './styles/icon.scss';
+@import './styles/animation.scss';
 </style>
