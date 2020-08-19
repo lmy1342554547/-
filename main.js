@@ -10,6 +10,10 @@ import utils from './utils';
 import filters from './filters';
 import mixin from './mixins/mixin.js'
 
+// 引入全局uView
+import uView from 'uview-ui'
+Vue.use(uView)
+
 Vue.config.productionTip = false
 App.mpType = 'app'
 

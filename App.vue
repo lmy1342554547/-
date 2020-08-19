@@ -1,12 +1,12 @@
 <script>
-import Vue from 'vue';
+import Vue from "vue";
 export default {
 	onLaunch() {
 		uni.getSystemInfo({
 			success: res => {
 				// #ifndef MP
 				Vue.prototype.StatusBar = res.statusBarHeight;
-				if (res.platform == 'android') {
+				if (res.platform == "android") {
 					Vue.prototype.CustomBar = res.statusBarHeight + 50;
 				} else {
 					Vue.prototype.CustomBar = res.statusBarHeight + 45;
@@ -32,7 +32,8 @@ export default {
 
 <style lang="scss">
 /*每个页面公共css */
-@import './styles/main.scss';
-@import './styles/icon.scss';
-@import './styles/animation.scss';
+@import "styles/main.scss";
+@import "styles/icon.scss";
+@import "styles/animation.scss";
+@import "uview-ui/index.scss";
 </style>

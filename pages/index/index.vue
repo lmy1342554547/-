@@ -13,19 +13,20 @@
 export default {
 	data() {
 		return {
-			title: 'Hello',
+			title: "Hello",
 			list: [
 				{
-					name: '关注'
+					name: "关注"
 				},
 				{
-					name: '推荐'
+					name: "推荐"
 				},
 				{
-					name: '电影'
+					name: "电影"
 				}
 			],
-			current: 0
+			current: 0,
+			aa: { goo: "ba" }
 		};
 	},
 	onLoad() {},
