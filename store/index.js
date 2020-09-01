@@ -8,7 +8,7 @@ Vue.use(Vuex);
 // 定义永久性存储数据
 let permanent = uni.getStorageSync('permanent') || {};
 // 需要永久性存储，且下次APP启动需要取出的，在state中的变量名
-let saveStateKeys = ['vuex_user', 'vuex_token'];
+let saveStateKeys = ['weixin_user','vuex_user', 'vuex_token'];
 // 永久性存储方法
 const savePermanent = (key, value) => {
     // 判断变量名是否在需要存储的数组中
@@ -29,7 +29,8 @@ export default new Vuex.Store({
         // 如果上面从本地获取的permanent对象下有对应的属性，就赋值给state中对应的变量
         // 加上vuex_前缀，是防止变量名冲突，也让人一目了然
         vuex_user: permanent.vuex_user ? permanent.vuex_user : {},
-        vuex_token: permanent.vuex_token ? permanent.vuex_token : '',
+		weixin_user: permanent.weixin_user ? permanent.weixin_user : {},
+        vuex_token: permanent.vuex_token ? permanent.vuex_token : ''
     },
     // 根级别Mutations
     mutations: {

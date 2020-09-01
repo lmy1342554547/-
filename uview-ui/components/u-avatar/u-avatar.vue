@@ -6,7 +6,7 @@
 			class="u-avatar__img"
 			v-if="!uText && avatar"
 			:src="avatar" 
-			:mode="mode"
+			:mode="imgMode"
 		></image>
 		<text class="u-line-1" v-else-if="uText" :style="{
 			fontSize: '38rpx'
@@ -200,7 +200,7 @@
 			width: 32rpx;
 			color: #ffffff;
 			height: 32rpx;
-			display: flex;
+			@include vue-flex;
 			justify-content: center;
 			align-items: center;
 			border-radius: 100rpx;
@@ -227,7 +227,7 @@
 			width: 32rpx;
 			color: #ffffff;
 			height: 32rpx;
-			display: flex;
+			@include vue-flex;
 			justify-content: center;
 			align-items: center;
 			border-radius: 100rpx;

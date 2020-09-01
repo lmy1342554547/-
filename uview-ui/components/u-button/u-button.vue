@@ -10,7 +10,6 @@
 			hairLine ? showHairLineBorder : 'u-btn--bold-border',
 			'u-btn--' + type,
 			disabled ? `u-btn--${type}--disabled` : '',
-			
 		]"
 		:disabled="disabled"
 		:form-type="formType"
@@ -29,7 +28,9 @@
 		@error="error"
 		@opensetting="opensetting"
 		@launchapp="launchapp"
-		:style="[customStyle]"
+		:style="[customStyle, {
+			overflow: ripple ? 'hidden' : 'visible'
+		}]"
 		@tap.stop="click($event)"
 		:hover-class="getHoverClass"
 		:loading="loading"
@@ -342,7 +343,7 @@ export default {
 	// 避免边框某些场景可能被“裁剪”，不能设置为hidden
 	overflow: visible;
 	line-height: 1;
-	display: flex;
+	@include vue-flex;
 	align-items: center;
 	justify-content: center;
 	cursor: pointer;

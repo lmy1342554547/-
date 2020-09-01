@@ -9,6 +9,8 @@ class Request {
 
 	// 主要请求部分
 	request(options = {}) {
+		// 拦截同一地址在未响应状态下的连续请求
+		if ((this.config.baseUrl + options.url) == this.config.firstUrl && this.config.timer) return;
 		// 检查请求拦截
 		if (this.interceptor.request && typeof this.interceptor.request === 'function') {
 			let tmpConfig = {};
@@ -64,11 +66,14 @@ class Request {
 						}
 					} else {
 						// 不返回原始数据的情况下，服务器状态码不为200，modal弹框提示
-						// if(response.errMsg) {
-						// 	uni.showModal({
-						// 		title: response.errMsg
-						// 	});
-						// }
+						if (response.errMsg) {
+							uni.showModal({
+								title: '提示',
+								content: '获取数据错误,状态码' + response.data.status,
+								showCancel: false
+							});
+							console.table(response.data);
+						}
 						reject(response)
 					}
 				}
@@ -90,6 +95,7 @@ class Request {
 					this.config.timer = null;
 				}, this.config.loadingTime);
 			}
+			this.config.firstUrl = options.url;
 			uni.request(options);
 		})
 		// .catch(res => {
@@ -102,6 +108,7 @@ class Request {
 	constructor() {
 		this.config = {
 			baseUrl: '', // 请求的根域名
+			firstUrl: '', // 上一次请求地址
 			// 默认的请求头
 			header: {},
 			method: 'POST',

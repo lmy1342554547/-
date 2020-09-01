@@ -1,50 +1,4 @@
 /* 此样式文件是ColorUi样式库上额外扩展一些样式 */
-
-/* 项目相关变量 */
-$themeColor: #06d078;
-
-/* 项目元素色 */
-.text-theme,
-.line-theme,
-.lines-theme {
-    color: #06d078;
-}
-
-/* 项目常用背景色 */
-.bg-theme {
-    background-color: #06d078;
-}
-
-/* 项目主题按钮样式 */
-.theme-btn {
-    height: 88rpx !important;
-    font-size: 32rpx;
-    border-radius: 50rpx !important;
-    color: #ffffff !important;
-    background-color: #06d078 !important;
-}
-
-/* 项目主题按钮镂空样式 */
-.theme-btn-plain {
-    height: 88rpx !important;
-    font-size: 32rpx;
-    border-radius: 50rpx !important;
-    color: #06d078 !important;
-    background-color: #ffffff !important;
-    border: 2rpx solid #06d078 !important;
-}
-
-.container {
-    width: 100%;
-	font-size: 30rpx;
-    min-height: 100vh;
-	color: #303133;
-	background-color: #ffffff;
-    display: flex;
-	overflow-x: hidden;
-    flex-direction: column;
-}
-
 view,
 scroll-view,
 swiper,
@@ -496,8 +450,8 @@ radio.theme[checked] .wx-radio-input,
 switch.theme.checked .uni-switch-input,
 checkbox.theme.checked .uni-checkbox-input,
 radio.theme.checked .uni-radio-input {
-    background-color: #06d078;
-    border-color: #06d078;
+    background-color: #1890FF;
+    border-color: #1890FF;
     color: #ffffff !important;
 }
 
@@ -2577,7 +2531,7 @@ swiper.round-dot .uni-swiper-dot.uni-swiper-dot-active {
 }
 
 .screen-swiper {
-    min-height: 375upx;
+    // min-height: 375upx;
 }
 
 .screen-swiper image,
@@ -3242,6 +3196,11 @@ scroll-view.cu-steps .cu-item {
     border-color: #ffffff;
 }
 
+/* 项目常用背景色 */
+.bg-theme {
+    background-color: #1890FF;
+}
+
 .bg-red {
     background-color: #e54d42;
     color: #ffffff;
@@ -3640,7 +3599,7 @@ scroll-view.cu-steps .cu-item {
     text-overflow: ellipsis;
 }
 
-@for $i from 2 through 10 {
+@for $i from 1 through 10 {
     .text-cut-#{$i} {
         overflow: hidden;
         text-overflow: ellipsis;
@@ -3743,7 +3702,7 @@ scroll-view.cu-steps .cu-item {
 .text-grey,
 .line-grey,
 .lines-grey {
-    color: #8799a3;
+    color: #999999;
 }
 
 .text-gray,
@@ -3763,6 +3722,14 @@ scroll-view.cu-steps .cu-item {
 .lines-white {
     color: #ffffff;
 }
+
+/* 项目元素色 */
+.text-theme,
+.line-theme,
+.lines-theme {
+    color: #1890FF;
+}
+
 
 .width-max {
     width: 100%;

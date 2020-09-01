@@ -7,11 +7,11 @@
  * @param Number duration 多少毫秒后隐藏
  */
 function toast(title = '', icon = 'none', duration = 1500) {
-    uni.showToast({
-        title,
-        icon,
-        duration
-    })
+	uni.showToast({
+		title,
+		icon,
+		duration
+	})
 };
 
 /**
@@ -21,17 +21,17 @@ function toast(title = '', icon = 'none', duration = 1500) {
  * @param Function callback 回调方法
  */
 function alert(content = '', title = '提示', callback) {
-    callback = callback || function() {};
-    uni.showModal({
-        title,
-        content,
-        showCancel: false,
-        success: (res) => {
-            if (res.confirm) {
-                callback()
-            }
-        }
-    })
+	callback = callback || function() {};
+	uni.showModal({
+		title,
+		content,
+		showCancel: false,
+		success: (res) => {
+			if (res.confirm) {
+				callback()
+			}
+		}
+	})
 };
 
 /**
@@ -41,18 +41,18 @@ function alert(content = '', title = '提示', callback) {
  * @param Function callback 回调方法
  */
 function confirm(content = '', title = '提示', callback) {
-    callback = callback || function() {}
-    uni.showModal({
-        title,
-        content,
-        success: (res) => {
-            if (res.confirm) {
-                callback();
-            } else if (res.cancel) {
-                // console.log('用户点击取消');
-            }
-        }
-    })
+	callback = callback || function() {}
+	uni.showModal({
+		title,
+		content,
+		success: (res) => {
+			if (res.confirm) {
+				callback();
+			} else if (res.cancel) {
+				// console.log('用户点击取消');
+			}
+		}
+	})
 };
 
 /**
@@ -60,14 +60,33 @@ function confirm(content = '', title = '提示', callback) {
  * @param Function callback 回调函数
  */
 function getWeiXinCode(callback) {
-    uni.login({
-        provider: 'weixin',
-        success: (res) => {
-            uni.setStorageSync('weixinCode', res.code);
-            callback(res.code);
-        }
-    })
+	uni.login({
+		provider: 'weixin',
+		success: (res) => {
+			uni.setStorageSync('weixinCode', res.code);
+			callback(res.code);
+		}
+	})
 };
+
+// 获取登陆Token
+function getToken(callback) {
+	callback = callback || function() {};
+	uni.removeStorageSync('permanent');
+	uni.login({
+		provider: "weixin",
+		success: res => {
+			this.$u
+				.post("/auth/weChat/login", {
+					jsCode: res.code
+				})
+				.then(res => {
+					this.$setState("vuex_token", res.token);
+					callback()
+				});
+		}
+	});
+}
 
 /**
  * @description 函数防抖 短时间内多次触发同一事件，只执行最后一次，或者只执行最开始的一次，中间的不执行
@@ -76,23 +95,23 @@ function getWeiXinCode(callback) {
  * @param Booleans immediate true - 立即执行， false - 延迟执行
  */
 function debounce(func, wait = 500, immediate = true) {
-    let timer;
-    return function() {
-        let context = this,
-            args = arguments;
-        if (timer) clearTimeout(timer);
-        if (immediate) {
-            let callNow = !timer;
-            timer = setTimeout(() => {
-                timer = null;
-            }, wait);
-            if (callNow) func.apply(context, args);
-        } else {
-            timer = setTimeout(() => {
-                func.apply
-            }, wait)
-        }
-    }
+	let timer;
+	return function() {
+		let context = this,
+			args = arguments;
+		if (timer) clearTimeout(timer);
+		if (immediate) {
+			let callNow = !timer;
+			timer = setTimeout(() => {
+				timer = null;
+			}, wait);
+			if (callNow) func.apply(context, args);
+		} else {
+			timer = setTimeout(() => {
+				func.apply
+			}, wait)
+		}
+	}
 };
 
 /**
@@ -102,36 +121,37 @@ function debounce(func, wait = 500, immediate = true) {
  * @param Number type 1 表时间戳版，2 表定时器版
  */
 function throttling(func, wait = 500, type = 1) {
-    if (type === 1) {
-        let previous = 0;
-    } else if (type === 2) {
-        let timeout;
-    }
-    return function() {
-        let context = this;
-        let args = arguments;
-        if (type === 1) {
-            let now = Date.now();
-            if (now - previous > wait) {
-                func.apply(context, args);
-                previous = now;
-            }
-        } else if (type === 2) {
-            if (!timeout) {
-                timeout = setTimeout(() => {
-                    timeout = null;
-                    func.apply(context, args)
-                }, wait)
-            }
-        }
-    }
+	if (type === 1) {
+		let previous = 0;
+	} else if (type === 2) {
+		let timeout;
+	}
+	return function() {
+		let context = this;
+		let args = arguments;
+		if (type === 1) {
+			let now = Date.now();
+			if (now - previous > wait) {
+				func.apply(context, args);
+				previous = now;
+			}
+		} else if (type === 2) {
+			if (!timeout) {
+				timeout = setTimeout(() => {
+					timeout = null;
+					func.apply(context, args)
+				}, wait)
+			}
+		}
+	}
 }
 
 export default {
-    toast,
-    alert,
-    confirm,
-    getWeiXinCode,
-    debounce,
-    throttling
+	toast,
+	alert,
+	confirm,
+	getWeiXinCode,
+	debounce,
+	throttling,
+	getToken
 };

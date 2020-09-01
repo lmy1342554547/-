@@ -9,5 +9,6 @@ export default {
 @import "styles/main.scss";
 @import "styles/icon.scss";
 @import "styles/animation.scss";
+@import "styles/common.scss";
 @import "uview-ui/index.scss";
 </style>

@@ -6,8 +6,8 @@
 			v-for="(item, index) in lists"
 			:key="index"
 			:style="{
-				width: width + 'rpx',
-				height: width + 'rpx'
+				width: $u.addUnit(width),
+				height: $u.addUnit(height)
 			}"
 		>
 			<view
@@ -39,8 +39,8 @@
 				hover-class="u-add-wrap__hover"
 				hover-stay-time="150"
 				:style="{
-					width: width + 'rpx',
-					height: width + 'rpx'
+					width: $u.addUnit(width),
+					height: $u.addUnit(height)
 				}"
 			>
 				<u-icon name="plus" class="u-add-btn" size="40"></u-icon>
@@ -202,8 +202,13 @@ export default {
 			type: Boolean,
 			default: false
 		},
-		// 内部预览图片区域和选择图片按钮的区域宽度，高等于宽
+		// 内部预览图片区域和选择图片按钮的区域宽度
 		width: {
+			type: [String, Number],
+			default: 200
+		},
+		// 内部预览图片区域和选择图片按钮的区域高度
+		height: {
 			type: [String, Number],
 			default: 200
 		},
@@ -520,7 +525,7 @@ export default {
 @import '../../libs/css/style.components.scss';
 
 .u-upload {
-	display: flex;
+	@include vue-flex;
 	flex-wrap: wrap;
 	align-items: center;
 }
@@ -573,13 +578,13 @@ export default {
 	border-radius: 100rpx;
 	width: 44rpx;
 	height: 44rpx;
-	display: flex;
+	@include vue-flex;
 	align-items: center;
 	justify-content: center;
 }
 
 .u-icon {
-	display: flex;
+	@include vue-flex;
 	align-items: center;
 	justify-content: center;
 }

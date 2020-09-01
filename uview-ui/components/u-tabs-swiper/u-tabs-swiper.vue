@@ -393,7 +393,7 @@
 
 	/* #ifdef H5 */
 	// 通过样式穿透，隐藏H5下，scroll-view下的滚动条
-	scroll-view /deep/ ::-webkit-scrollbar {
+	scroll-view ::v-deep ::-webkit-scrollbar {
 		display: none;
 		width: 0 !important;
 		height: 0 !important;
@@ -414,7 +414,7 @@
 	}
 
 	.u-tabs-scorll-flex {
-		display: flex;
+		@include vue-flex;
 		justify-content: space-between;
 	}
 
@@ -454,7 +454,7 @@
 		position: absolute;
 		top: 0;
 		transition-property: left, background-color;
-		display: flex;
+		@include vue-flex;
 		flex-direction: row;
 		justify-content: center;
 		align-items: center;

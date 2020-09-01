@@ -48,14 +48,13 @@ function timeFormat(timeVlaue = null, fmt = 'yyyy-mm-dd') {
  * @param String | Boolean format 如果为时间格式字符串，超出一定时间范围，返回固定的时间格式；
  * 如果为布尔值false，无论什么时间，都返回多久以前的格式
  */
-function timeFrom(timeVlaue = null, format = 'yyyy-mm-dd') {
+function timeFrom(timeVlaue = '', format = 'yyyy-mm-dd') {
     let timer;
     if (!isNaN(timeVlaue)) {
         // 判断用户输入的时间戳是秒还是毫秒,一般前端js获取的时间戳是毫秒(13位),后端传过来的为秒(10位)
         if (timeVlaue.toString().length == 10) timeVlaue *= 1000;
         timer = (new Date()).getTime() - timeVlaue;
     }else {
-        console.log(timeVlaue);
         timer = (new Date()).getTime() - (new Date(timeVlaue)).getTime();
     }
     timer = parseInt(timer / 1000);
