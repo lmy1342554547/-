@@ -17,28 +17,6 @@ module.exports = {
 				]
 				return args
 			})
-			// 警告 app平台请删除中间代码---------------
-			config.module.rule('vue').use('vue-loader').loader('vue-loader').tap(options => {
-				const compile = options.compiler.compile
-				options.compiler.compile = (template, info) => {
-					if (info.resourcePath.match(/^pages/)) {
-						template = template.trim()
-						template = template.replace(/^<[\d\D]+?>/g, _ => {
-							_ = _.replace(/container/,'container u-skeleton')
-							return `${_}
-		                        <u-no-network></u-no-network>
-								<u-toast ref="uToast" />
-								<u-top-tips ref="uTips"></u-top-tips>
-								<u-skeleton :loading="isShowSkeleton" :animation="true" bgColor="#FFF"></u-skeleton>
-		                    `
-						}
-							
-						)
-					}
-					return compile(template, info)
-				}
-				return options
-			})
-			// 警告 app平台请删除中间代码---------------
+			
 	}
 }

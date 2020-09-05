@@ -6,6 +6,9 @@
 				"navigationBarTitleText": "招标服务",
 				"enablePullDownRefresh": true
 			}
+		}, {
+			"path": "pages/main/test",
+			"style": {}
 		}
 	],
 	"condition": { //模式配置，仅开发期间生效

@@ -9,6 +9,7 @@ Vue.component('cu-custom', cuCustom)
 import utils from './utils';
 import filters from './filters';
 import mixin from './mixins/mixin.js'
+import Directive from './directive'
 
 // 引入全局uView
 import uView from 'uview-ui'
